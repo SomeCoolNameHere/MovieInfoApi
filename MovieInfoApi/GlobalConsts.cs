@@ -11,6 +11,4 @@ public class GlobalConsts
         StatusCode = 401,
         Content = "Api Key is not valid"
     };
-
-    public static int DefaultTimeoutValue = 20;
 }
