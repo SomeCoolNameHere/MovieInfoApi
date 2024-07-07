@@ -8,6 +8,7 @@ services.AddSwaggerConfiguration();
 services.ConfigureMovieServices(configuration);
 
 services.AddEndpointsApiExplorer();
+
 services.AddControllers();
 services.AddAutomapperConfiguration();
 var app = builder.Build();
