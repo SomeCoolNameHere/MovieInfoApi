@@ -22,6 +22,8 @@ public class ClientRequestInfo
     [BsonElement("processing_time_ms")]
     public int ProcessingTimeMs { get; set; }
 
+// probably it should be better to add indexes on timestamp field 
+// because most searches are going using this field
     [BsonElement("timestamp")]
     public DateTime Timestamp { get; set; }
 

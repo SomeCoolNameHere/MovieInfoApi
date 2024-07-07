@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace MovieInfoApi.Services;
 
-public class OmdbApi : IOMDBApi
+public class OmdbApi : IOmdbApi
 {
     private readonly IConfiguration _configuration;
     private readonly HttpClient _httpClient;
@@ -14,6 +14,7 @@ public class OmdbApi : IOMDBApi
     {
         _configuration = configuration;
         _httpClient = client;
+        _httpClient.BaseAddress = new Uri(_configuration["OAMBApiHost"]);
     }
 
     public async Task<FilmInfoOMDBResponse> MovieInfo(string title)
@@ -26,6 +27,7 @@ public class OmdbApi : IOMDBApi
 
         var response = await _httpClient.GetAsync(uriBuilder.ToString());
         var resultJson = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<FilmInfoOMDBResponse>(resultJson);
+        var movieInfo = JsonConvert.DeserializeObject<FilmInfoOMDBResponse>(resultJson);
+        return movieInfo;
     }
 }

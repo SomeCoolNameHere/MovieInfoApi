@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace MovieInfoApi;
@@ -6,7 +5,6 @@ namespace MovieInfoApi;
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class AdminAuthAttribute : Attribute, IAsyncActionFilter
 {
-
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         if (!context.HttpContext.Request.Headers.TryGetValue(GlobalConsts.ApiKey, out var extractedApiKey))

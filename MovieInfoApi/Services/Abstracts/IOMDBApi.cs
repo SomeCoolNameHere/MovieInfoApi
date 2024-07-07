@@ -2,7 +2,7 @@ using MovieInfoApi.Models;
 
 namespace MovieInfoApi.Controllers.Abstracts;
 
-public interface IOMDBApi
+public interface IOmdbApi
 {
     public Task<FilmInfoOMDBResponse> MovieInfo(string title);
 }

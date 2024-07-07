@@ -26,13 +26,10 @@ public static class ConfigureServices
             return new MongoClient(connectionString);
         });
 
-        services.AddHttpClient<OmdbApi>((serviceProvider, client) =>
-        {
-            client.BaseAddress = new Uri(configuration.GetValue<string>("OAMBApiHost"));
-        });
+        services.AddHttpClient<IOmdbApi, OmdbApi>();
 
         services.AddScoped<IMovieDbService, MovieDbService>();
-        services.AddScoped<IOMDBApi, OmdbApi>();
+        services.AddScoped<IOmdbApi, OmdbApi>();
         services
             .Configure<RequestsInfoConfigs>(
                 configuration.GetSection(nameof(RequestsInfoConfigs))
@@ -51,6 +48,7 @@ public static class ConfigureServices
 
         return services;
     }
+
     public static IServiceCollection AddSwaggerConfiguration(this IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
@@ -81,5 +79,4 @@ public static class ConfigureServices
 
         return services;
     }
-    
 }

@@ -1,4 +1,3 @@
-using Microsoft.OpenApi.Models;
 using MovieInfoApi.Extentions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +17,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UsePathBase("/swagger");   
+
+app.UsePathBase("/swagger");
 app.MapControllers();
 app.UseRouting();
 app.Run();
